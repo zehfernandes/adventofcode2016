@@ -44,12 +44,9 @@ const isRealRoom = (roomName, checksum) => {
 
 const secondAnswer = (input) => {
 
-  const rooms = input.split('\n')
-  const regex = /([0a-z\-]+)(\d*)(\[[a-z]*\])/
+  const validRooms = clearRoomData(input)
   let decrypt = []
   let findRoom = ""
-
-  const validRooms = clearRoomData(input)
 
   validRooms.forEach((room) => {
     let leg = caesarShift(room.name.replace(/-/g, " "), room.id)

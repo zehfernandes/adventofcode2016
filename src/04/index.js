@@ -3,24 +3,24 @@ import caesarShift from './caesarShift.js'
 const parseRoom = (roomName) => {
   let object = []
 
-  for (var i=0; i < roomName.length; i++) {
+  for (let i = 0; i < roomName.length; i++) {
     let letter = roomName.charAt(i)
 
-    let newLetter = object.some( (elem,index) => {
+    let newLetter = object.some((elem,index) => {
       if (elem.letter === letter) {
         object[index].count++
         return true
       }
     })
 
-    if(!newLetter) object.push({"letter": letter, "count": 1})
+    if (!newLetter) object.push({'letter': letter, 'count': 1})
 
   }
 
   // Sort array first alpha
   object.sort((a, b) => {
-    if (a.count < b.count) return 1;
-    if (a.count > b.count) return -1;
+    if (a.count < b.count) return 1
+    if (a.count > b.count) return -1
     return a.letter.localeCompare(b.letter)
   })
 
@@ -28,17 +28,17 @@ const parseRoom = (roomName) => {
 }
 
 const isRealRoom = (roomName, checksum) => {
-  let roomObject = parseRoom(roomName.replace(/-/g, ""))
+  let roomObject = parseRoom(roomName.replace(/-/g, ''))
   // console.log(roomObject)
-  let mirrorSum = ""
+  let mirrorSum = ''
 
-  for (var i = 0; i <= 4; i++) {
+  for (let i = 0; i <= 4; i++) {
     mirrorSum += roomObject[i].letter
   }
 
   // console.log(mirrorSum)
   // console.log(checksum)
-  return mirrorSum === checksum.replace(/\[|\]/g, "")
+  return mirrorSum === checksum.replace(/\[|\]/g, '')
 
 }
 
@@ -46,15 +46,15 @@ const secondAnswer = (input) => {
 
   const validRooms = clearRoomData(input)
   let decrypt = []
-  let findRoom = ""
+  let findRoom = ''
 
   validRooms.forEach((room) => {
-    let leg = caesarShift(room.name.replace(/-/g, " "), room.id)
+    let leg = caesarShift(room.name.replace(/-/g, ' '), room.id)
     decrypt.push([leg, room.id])
   })
 
-  decrypt.map((elem,index) => {
-    if (elem[0].match(/(northpole)/) ) {
+  decrypt.map((elem) => {
+    if (elem[0].match(/(northpole)/)) {
       findRoom = elem[1]
     }
   })
@@ -76,7 +76,6 @@ const firstAnswer = (input) => {
 
 }
 
-
 const clearRoomData = (input) => {
 
   const rooms = input.split('\n')
@@ -93,9 +92,9 @@ const clearRoomData = (input) => {
     if (isRealRoom(roomName, checksum)) {
       validRooms.push(
         {
-          "name": roomName,
-          "id": id,
-          "checksum": checksum,
+          'name': roomName,
+          'id': id,
+          'checksum': checksum,
         }
       )
     }
@@ -109,5 +108,5 @@ const clearRoomData = (input) => {
 module.exports = {
   firstAnswer: firstAnswer,
   secondAnswer: secondAnswer,
-  isRealRoom: isRealRoom
+  isRealRoom: isRealRoom,
 }

@@ -42,40 +42,6 @@ const isRealRoom = (roomName, checksum) => {
 
 }
 
-const secondAnswer = (input) => {
-
-  const validRooms = clearRoomData(input)
-  let decrypt = []
-  let findRoom = ''
-
-  validRooms.forEach((room) => {
-    let leg = caesarShift(room.name.replace(/-/g, ' '), room.id)
-    decrypt.push([leg, room.id])
-  })
-
-  decrypt.map((elem) => {
-    if (elem[0].match(/(northpole)/)) {
-      findRoom = elem[1]
-    }
-  })
-
-  return findRoom
-
-}
-
-const firstAnswer = (input) => {
-
-  const validRooms = clearRoomData(input)
-  let sumID = 0
-
-  validRooms.forEach((room) => {
-    sumID = sumID + room.id
-  })
-
-  return sumID
-
-}
-
 const clearRoomData = (input) => {
 
   const rooms = input.split('\n')
@@ -102,6 +68,40 @@ const clearRoomData = (input) => {
   })
 
   return validRooms
+
+}
+
+const firstAnswer = (input) => {
+
+  const validRooms = clearRoomData(input)
+  let sumID = 0
+
+  validRooms.forEach((room) => {
+    sumID = sumID + room.id
+  })
+
+  return sumID
+
+}
+
+const secondAnswer = (input) => {
+
+  const validRooms = clearRoomData(input)
+  let decrypt = []
+  let findRoom = ''
+
+  validRooms.forEach((room) => {
+    let leg = caesarShift(room.name.replace(/-/g, ' '), room.id)
+    decrypt.push([leg, room.id])
+  })
+
+  decrypt.map((elem) => {
+    if (elem[0].match(/(northpole)/)) {
+      findRoom = elem[1]
+    }
+  })
+
+  return findRoom
 
 }
 

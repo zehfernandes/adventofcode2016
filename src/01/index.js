@@ -1,16 +1,3 @@
-const firstAnswer = (input) => {
-
-  const result = walk(input)
-  return result.firstAnswer
-
-}
-const secondAnswer = (input) => {
-
-  const result = walk(input)
-  return result.secondAnswer
-
-}
-
 const walk = (input) => {
 
 	let direction = 0
@@ -65,6 +52,19 @@ const walk = (input) => {
     firstAnswer: Math.abs(walk.x) + Math.abs(walk.y),
     secondAnswer: answer2
   }
+
+}
+
+const firstAnswer = (input) => {
+
+  const result = walk(input)
+  return result.firstAnswer
+
+}
+const secondAnswer = (input) => {
+
+  const result = walk(input)
+  return result.secondAnswer
 
 }
 

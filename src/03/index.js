@@ -19,12 +19,26 @@ const isValidTriangle = (a,b,c) => {
   let longestSide = Math.max(a,b,c)
   let sumOfAll = parseInt(a) + parseInt(b) + parseInt(c)
 
-  // console.log(`Long Side: ${longestSide}`)
-  // console.log(`Sum: ${sumOfAll}`)
-  // console.log(longestSide < sumOfAll - longestSide)
-
   return longestSide < sumOfAll - longestSide
 
+}
+
+const firstAnswer = (input) => {
+
+  const triangles = input.split('\n')
+  let validTriangles = 0
+
+  triangles.forEach((triangle) => {
+
+    let sides = triangle.split(/\s+/)
+
+    // console.log(`Triangle ${index}`)
+    if (isValidTriangle(sides[1] , sides[2] , sides[3])) {
+      validTriangles++
+    }
+  })
+
+  return validTriangles
 }
 
 const secondAnswer = (input) => {
@@ -42,24 +56,6 @@ const secondAnswer = (input) => {
       if (isValidTriangle(a , b , c)) {
         validTriangles++
       }
-    }
-  })
-
-  return validTriangles
-}
-
-const firstAnswer = (input) => {
-
-  const triangles = input.split('\n')
-  let validTriangles = 0
-
-  triangles.forEach((triangle) => {
-
-    let sides = triangle.split(/\s+/)
-
-    // console.log(`Triangle ${index}`)
-    if (isValidTriangle(sides[1] , sides[2] , sides[3])) {
-      validTriangles++
     }
   })
 

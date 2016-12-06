@@ -9,7 +9,7 @@ const firstAnswer = (input) => {
     const hash = `${input}${count}`
     const md5 = MD5(hash)
 
-    if(md5.substring(0,5).localeCompare("00000") === 0) {
+    if(md5.substring(0,5) === "00000") {
       let char = md5.charAt(5)
       code += char
 

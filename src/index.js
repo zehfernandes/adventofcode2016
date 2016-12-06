@@ -7,12 +7,12 @@ fs.readFile('src/05/input.txt', 'utf8', (err, data) => {
     return
   }
 
-  //console.time("firstAnswer")
-  //console.log(`First Answer: ${firstAnswer(data)}`)
-  //console.timeEnd("firstAnswer")
+  console.time("Timing")
+  console.log(`First Answer: ${firstAnswer(data)}`)
+  console.timeEnd("Timing")
 
-  console.time("secondAnswer")
+  console.time("Timing")
   console.log(`Second Answer: ${secondAnswer(data)}`)
-  console.timeEnd("secondAnswer")
+  console.timeEnd("Timing")
 
 })

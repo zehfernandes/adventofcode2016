@@ -24,7 +24,7 @@ const firstAnswer = (input) => {
 }
 
 const secondAnswer = (input) => {
-  let code  = [0,0,0,0,0,0,0,0]
+  let code  = [null,null,null,null,null,null,null,null]
   let count = 0
   let i = 0
 
@@ -34,11 +34,12 @@ const secondAnswer = (input) => {
 
     if(md5.substring(0,5) === "00000") {
       let position = parseInt(md5.charAt(5))
-      console.log(position)
-      if (position <= 7) {
+      if (position <= 7 && code[position] === null) {
         let char = md5.charAt(6)
         code[position] = char
 
+        console.log(`Position: ${position}`)
+        console.log(`Char: ${char}`)
         i++
       }
     }
@@ -46,7 +47,7 @@ const secondAnswer = (input) => {
     count++
   }
 
-  formatCode = ""
+  let formatCode = ""
   code.map((n) =>{ formatCode += n })
 
   return formatCode

@@ -30,5 +30,8 @@
     "failFast": true,
     "verbose": true,
     "powerAssert": false
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.8"
   }
 }

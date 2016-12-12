@@ -40,6 +40,7 @@ const secondAnswer = (input) => {
 
         console.log(`Position: ${position}`)
         console.log(`Char: ${char}`)
+
         i++
       }
     }
